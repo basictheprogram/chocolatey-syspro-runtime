@@ -9,8 +9,8 @@ $packageArgs = @{
   unzipLocation = $toolsDir
   fileType      = 'MSI' 
   file          = $fileLocation
-  file          = $fileLocation64
-  softwareName  = 'syspro-runtime*' #part or all of the Display Name as you see it in Programs and Features. It should be enough to be unique
+  file64        = $fileLocation64
+  softwareName  = 'syspro-runtime*'
 
   # Checksums are now required as of 0.10.0.
   #
