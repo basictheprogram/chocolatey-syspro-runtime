@@ -21,15 +21,10 @@ $packageArgs = @{
   checksum64    = 'c62d19c9daa17378803c3dd1f7938ab5acc821378dcf574ef060ae78da0846b0'
   checksumType64= 'sha256'
 
-  # MSI
-  # "\\server\Deploy\SYSPRO\ISSetupPrerequisites\{704F9975-E977-4AEB-BF57-6E5D6EDB6781}\SYSPRO Runtime 32-bit.exe" /v"/qr"
-  # "\\server\deploy\syspro\ISSetupPrerequisites\{68AC2C62-2E32-49D5-BE62-FFBDFB8B002E}\SYSPRO Runtime 64-bit.exe" /v"/qr"
+  # Cygwin $env:TEMP is C:\tools\cygwin\tmp\chocolatey
+  # Powershell $env:TEMP is C:\Users\tanner\AppData\Local\Temp
   #
-  # MST-files are being applied by Windows Installer while it is installing an MSI-file. This is done with a command like this:
-  # msiexec /qb /i AdbeRdr1010_de_DE.msi TRANSFORMS=AdbeRdr1010_de_DE.mst
-  #
-  #silentArgs    = "/qn /norestart /l*v `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`"" 
-  silentArgs     = '/qn /norestart /l*v `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`" TRANSFORMS=SYSPRO_Runtime.mst'
+  silentArgs     = "/qn /norestart /l*v `"$($env:TEMP)\$($packageName).log`""
   validExitCodes= @(0, 3010, 1641)
 }
 
