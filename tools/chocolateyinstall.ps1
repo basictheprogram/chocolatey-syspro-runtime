@@ -29,7 +29,7 @@ $packageArgs = @{
   # msiexec /qb /i AdbeRdr1010_de_DE.msi TRANSFORMS=AdbeRdr1010_de_DE.mst
   #
   #silentArgs    = "/qn /norestart /l*v `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`"" 
-  silentArgs     = ' /v"qr" TRANSFORMS=SYSPRO Runtime.mst'
+  silentArgs     = '/qn /norestart `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`" TRANSFORMS=SYSPRO_Runtime.mst'
   validExitCodes= @(0, 3010, 1641)
 }
 
