@@ -15,7 +15,7 @@
     <docsUrl>http://cdn.rawgit.com/basictheprogram/chocolatey-syspro-client/master/docs</docsUrl>
     <mailingListUrl>https://us.syspro.com/erp-services/erp-support/</mailingListUrl>
     <bugTrackerUrl>https://us.syspro.com/erp-services/erp-support/</bugTrackerUrl>
-    <tags>SYSPRO7 Runtime</tags>
+    <tags>SYSPRO7 Runtime ERP</tags>
     <summary>SYSPRO is an industry-built Enterprise Resource Planning (ERP) solution</summary>
     <description>
       SYSPRO is an industry-built Enterprise Resource Planning (ERP) solution designed to simplify business complexity 
