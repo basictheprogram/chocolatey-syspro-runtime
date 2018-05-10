@@ -7,7 +7,7 @@
     <owners>Real Time Support</owners>
     <title>SYSPRO 7 Runtime</title>
     <authors>SYSPRO, SYSPRO USA</authors>
-    <iconUrl>http://cdn.rawgit.com/basictheprogram/chocolatey-syspro-runtime/master/icons/syspro.png<</iconUrl>
+    <iconUrl>http://cdn.rawgit.com/basictheprogram/chocolatey-syspro-runtime/master/icons/syspro.png</iconUrl>
     <copyright>Copyright © 1994-2018</copyright>
     <licenseUrl>http://cdn.rawgit.com/basictheprogram/chocolatey-syspro-runtime/master/LICENSES.txt</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
