@@ -7,8 +7,8 @@ $packageArgs = @{
   unzipLocation = $toolsDir
   fileType      = 'exe'
   silentArgs    = '/S /v/qn'
-  url           = 'http://gold-images.int.celadonsystems.com/SYSPRO/SYSPRO7_Update1_2016 - Lucy/SYSPRO/ISSetupPrerequisites/{704F9975-E977-4AEB-BF57-6E5D6EDB6781}/SYSPRO Runtime 32-bit.exe'
-  url64         = 'http://gold-images.int.celadonsystems.com/SYSPRO/SYSPRO7_Update1_2016 - Lucy/SYSPRO/ISSetupPrerequisites/{68AC2C62-2E32-49D5-BE62-FFBDFB8B002E}/SYSPRO Runtime 64-bit.exe'
+  url           = ''
+  url64         = ''
   softwareName  = 'syspro-runtime'
 
   # SYSPRO Runtime 32-bit.msi
