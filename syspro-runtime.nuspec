@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>syspro7-runtime</id>
-    <version>7.00.0004</version>
+    <version>7.00.0004.2021061000</version>
     <packageSourceUrl>https://github.com/basictheprogram/chocolatey-syspro-runtime</packageSourceUrl>
     <owners>basictheprogram</owners>
     <title>SYSPRO 7 Runtime</title>
     <authors>SYSPRO, SYSPRO USA</authors>
-    <iconUrl>https://basictheprogram.github.io/basictheprogram/chocolatey-syspro-runtime/icons/syspro-runtime.png</iconUrl>
+    <iconUrl>https://basictheprogram.github.io/chocolatey-syspro-runtime/icons/syspro-runtime.png</iconUrl>
     <copyright>Copyright © 1994-2018</copyright>
     <licenseUrl>https://www.crystalreports.com/faq/#lp-pom-block-1000</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
