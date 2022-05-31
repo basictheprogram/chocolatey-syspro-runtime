@@ -82,5 +82,5 @@ release_job:
     ref: '$CI_COMMIT_TAG'
     assets:    # Optional, multiple asset links
       links:
-        - name: 'NI VISA'
-          url: 'https://www.ni.com/en-us/support/downloads/drivers/download.ni-visa.html'
+        - name: 'Gold Image'
+          url: 'http://gold-images.int.celadonsystems.com/SYSPRO/'
