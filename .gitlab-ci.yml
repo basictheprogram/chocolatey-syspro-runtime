@@ -1,0 +1,86 @@
+---
+# You can override the included template(s) by including variable overrides
+# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
+# Secret Detection customization: https://docs.gitlab.com/ee/user/application_security/secret_detection/#customizing-settings
+# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings
+# Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings
+# Note that environment variables can be set in several places
+# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
+#
+include:
+  - template: Security/Secret-Detection.gitlab-ci.yml
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Container-Scanning.gitlab-ci.yml
+
+variables:
+  CHOCO_PACKAGE_NAME: ni-visa
+  CHOCO_COMMUNITY_PUSH_URL: https://push.chocolatey.org/
+  CHOCO_COMMUNITY_FEED: https://community.chocolatey.org/api/v2/
+  CHOCO_PRIVATE_PUSH_URL: http://chocolatey.int.celadonsystems.com/upload/
+  CHOCO_PRIVATE_FEED: http://chocolatey.int.celadonsystems.com/api/v2/
+  EXTRA_DESCRIPTION: "on https://gitlab.x.real-time.com/"
+
+container_scanning:
+  variables:
+    DOCKER_IMAGE: chocolatey/choco:latest-linux
+    CS_DISABLE_LANGUAGE_VULNERABILITY_SCAN: "false"
+
+default:
+  image: chocolatey/choco:latest-linux
+  tags:
+    - docker
+    - celadonsystems.com
+
+stages:
+  - build
+  - test
+  - push
+  - release
+
+build_job:
+  stage: build
+  script:
+    - choco pack
+  artifacts:
+    paths:
+      - /builds
+
+test_job:
+  stage: test
+  script:
+    - choco install -dv -s "'.;$CHOCO_COMMUNITY_FEED;$CHOCO_PRIVATE_FEED'" "$CHOCO_PACKAGE_NAME"
+    - choco uninstall "$CHOCO_PACKAGE_NAME"
+  artifacts:
+    paths:
+      - /builds
+
+push_job:
+  stage: push
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
+      when: manual
+      allow_failure: true
+    - if: $CI_COMMIT_TAG
+  script:
+    - choco apikey --force --key $CHOCO_PRIVATE_API_KEY --source $CHOCO_PRIVATE_PUSH_URL
+    - choco push --force --api-key $CHOCO_PRIVATE_API_KEY --source $CHOCO_PRIVATE_PUSH_URL
+  artifacts:
+    paths:
+      - /builds
+
+release_job:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  rules:
+    - if: $CI_COMMIT_TAG                  # Run this job when a tag is created manually
+  script:
+    - echo "running release_job"
+  release:
+    name: 'Release $CI_COMMIT_TAG'
+    description: 'Created using the release-cli $EXTRA_DESCRIPTION'    # $EXTRA_DESCRIPTION must be defined
+    tag_name: '$CI_COMMIT_TAG'                                         # elsewhere in the pipeline.
+    ref: '$CI_COMMIT_TAG'
+    assets:    # Optional, multiple asset links
+      links:
+        - name: 'NI VISA'
+          url: 'https://www.ni.com/en-us/support/downloads/drivers/download.ni-visa.html'
