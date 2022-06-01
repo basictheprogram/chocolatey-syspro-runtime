@@ -31,6 +31,6 @@ repos:
         entry: ansible-lint  --force-color -v
 
   - repo: https://github.com/zricethezav/gitleaks
-    rev: v8.8.4
+    rev: v8.8.5
     hooks:
       - id: gitleaks
